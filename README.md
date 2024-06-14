@@ -26,6 +26,28 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## 추가: .env 내용
+
+```
+// DB 주소
+DB_HOST=""
+
+// DB 포트
+DB_PORT=
+
+// DB 유저
+DB_USER=""
+
+// DB 비밀번호
+DB_PASS=""
+
+// DB 이름
+DB_NAME=""
+
+// JWT Secret Key
+JWT_SECRET=""
+```
+
 ## Installation
 
 ```bash
