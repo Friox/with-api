@@ -25,6 +25,14 @@ export class FamilyEntity {
   @Column('timestamp', { name: 'create_date', nullable: true })
   createDate: Date | null;
 
+  @Column('char', {
+    name: 'invite_code',
+    nullable: true,
+    unique: true,
+    length: 6,
+  })
+  inviteCode: string | null;
+
   @OneToMany(() => MissionEntity, (mission) => mission.familyU)
   missions: MissionEntity[];
 

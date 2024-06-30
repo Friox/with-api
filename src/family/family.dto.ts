@@ -3,6 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateFamilyDTO {
   uid: string;
+  inviteCode: string;
 
   @ApiProperty({
     description: '패밀리 이름',

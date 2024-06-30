@@ -34,6 +34,7 @@ export class FamilyService {
   async createFamily(createFamilyDTO: CreateFamilyDTO, req: Request) {
     const reqUserUID = req['user'].user_uid;
     createFamilyDTO.uid = this.toolsService.createUID();
+    createFamilyDTO.inviteCode = this.toolsService.createUID(6);
     createFamilyDTO.createDate = new Date();
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();

@@ -28,6 +28,7 @@ export class DiaryService {
       where: {
         userUid: userUID,
       },
+      relations: ['userU'],
     });
   }
 

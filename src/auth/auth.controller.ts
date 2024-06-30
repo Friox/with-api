@@ -1,8 +1,14 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Request } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignInReqDTO, SignUpDTO } from './auth.dto';
 import { Public } from 'src/decorators/public.decorator';
-import { ApiBody, ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiConsumes,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -34,7 +40,13 @@ export class AuthController {
   }
 
   @Post('getprofile')
-  async getProfile() {
-    return 'good';
+  @ApiBearerAuth()
+  @ApiOperation({
+    summary: '본인 프로필 조회',
+    description: '나의 프로필을 조회합니다.',
+  })
+  async getProfile(@Request() req: Request) {
+    const userUID = req['user'].user_uid;
+    return this.authService.getProfile(userUID);
   }
 }

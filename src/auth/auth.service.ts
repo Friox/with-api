@@ -50,4 +50,20 @@ export class AuthService {
     console.log(signUpDTO);
     return this.userRepository.save(userEntity);
   }
+
+  getProfile(userUID: string) {
+    return this.userRepository.findOne({
+      where: {
+        uid: userUID,
+      },
+      select: {
+        uid: true,
+        nickname: true,
+        realname: true,
+        signupDate: true,
+        profileUid: true,
+        exp: true,
+      },
+    });
+  }
 }
